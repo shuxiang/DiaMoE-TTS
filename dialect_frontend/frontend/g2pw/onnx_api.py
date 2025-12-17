@@ -57,7 +57,7 @@ class G2PWOnnxConverter:
         model_source: str = None,
         enable_non_tradional_chinese: bool = True,
     ):
-        g2pW_path = model_dir
+        g2pW_path = os.getenv('G2PW_DIR', '/home/sx/vm/DiaMoE-TTS/resources/g2pW')#model_dir
         sess_options = onnxruntime.SessionOptions()
         sess_options.graph_optimization_level = onnxruntime.GraphOptimizationLevel.ORT_ENABLE_ALL
         sess_options.execution_mode = onnxruntime.ExecutionMode.ORT_SEQUENTIAL
