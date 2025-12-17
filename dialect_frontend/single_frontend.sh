@@ -10,7 +10,7 @@ if [ $# -lt 3 ]; then
 fi
 
 # Valid dialect list
-allowed_dialects=("xian" "shijiazhuang" "putonghua" "chengdu" "zhengzhou" "gaoxiong" "qingdao" "jingjujingbai" "jingjuyunbai" "nanjing" "wuhan shanghai")
+allowed_dialects=("xian" "shijiazhuang" "putonghua" "chengdu" "zhengzhou" "gaoxiong" "qingdao" "jingjujingbai" "jingjuyunbai" "nanjing" "sinmin" "wuhan shanghai")
 
 # Extract parameters
 dialect="${@: -2:1}"

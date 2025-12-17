@@ -64,7 +64,8 @@ class DialectTTSPipeline:
     def __init__(self, auto_load_model=True):
         self.dialect_list = [
             "putonghua", "chengdu", "gaoxiong", "shanghai",
-            "shijiazhuang", "wuhan", "xian", "zhengzhou"
+            "shijiazhuang", "wuhan", "xian", "zhengzhou",
+            'sinmin',
         ]
         # 初始化前端处理器
         self.preprocessor = Preprocessor()
@@ -526,7 +527,11 @@ SAMPLE_REFERENCE_AUDIOS = {
     "zhengzhou": {
         "male": "prompts/zhengzhou_male_prompt.wav",
         "female": "prompts/zhengzhou_female_prompt.wav"
-    }
+    },
+    "sinmin": {
+        "male": "prompts/sinmin_male_prompt.wav",
+        "female": "prompts/sinmin_female_prompt.wav"
+    },
 }
 
 def create_gradio_interface():
@@ -819,7 +824,8 @@ def create_gradio_interface():
                     ["shijiazhuang", "Shijiazhuang Dialect"],
                     ["wuhan", "Wuhan Dialect"],
                     ["xian", "Xi'an Dialect"],
-                    ["zhengzhou", "Zhengzhou Dialect"]
+                    ["zhengzhou", "Zhengzhou Dialect"],
+                    ["sinmin", "Bobai Sinmin Dialect"]
                 ],
                 headers=["Dialect Code", "Dialect Name"],
                 interactive=False
