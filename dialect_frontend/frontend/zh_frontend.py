@@ -189,7 +189,7 @@ class Frontend:
             self._init_pypinyin()
             self.corrector = Polyphonic()
             self.g2pM_model = G2pM()
-            g2pW_path = os.getenv('G2PW_DIR', '/home/sx/vm/DiaMoE-TTS/resources/g2pW')
+            g2pW_path = os.getenv('G2PW_DIR', '/home/sx/diamoe/resources/g2pW')
             self.g2pW_model = G2PWOnnxConverter(style="pinyin", enable_non_tradional_chinese=True,model_dir=g2pW_path)
             self.pinyin2phone = generate_lexicon(with_tone=True, with_erhua=True)
         else:

@@ -4,7 +4,7 @@ hydra:
 
 datasets:
   name: train1  # dataset name
-  vocab: /home/sx/vm/DiaMoE-TTS/diamoe_tts/data/vocab.txt
+  vocab: /home/sx/diamoe/diamoe_tts/data/vocab.txt
   arrow_name: exp1
   batch_size_per_gpu: 2000  # 8 GPUs, 8 * 38400 = 307200    default=28800,a30=8192
   batch_size_type: frame  # frame | sample | dialectaware
@@ -53,7 +53,7 @@ ckpts:
   keep_last_n_checkpoints: 200  # -1 to keep all, 0 to not save intermediate, > 0 to keep last N checkpoints
   last_per_updates: 2000  # save last checkpoint per updates
   save_dir: ckpts/base_${model.name}_${model.mel_spec.mel_spec_type}_${model.tokenizer}_${datasets.name}_${datasets.arrow_name}
-  basic_ckpt_path:  /home/sx/vm/DiaMoE-TTS/resources/10ep_mlpEXP_9.pt 
+  basic_ckpt_path:  /home/sx/diamoe/resources/10ep_mlpEXP_9.pt 
 MoE:
   use_moe: True
   num_exps: 9
