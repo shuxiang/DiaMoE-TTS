@@ -12,10 +12,10 @@ def load_mapping(excel_path):
         hanzi = str(row["hanzi"]).strip()
         std_pinyin = str(row["standard_chinese_pinyin"]).strip() if pd.notna(row["standard_chinese_pinyin"]) else ""
         dialect = str(row["dialect_pinyin"]).strip()
-
         if std_pinyin == "":
             simple_map[hanzi] = dialect
         else:
+            simple_map[hanzi] = dialect # 无论如何都取dialect拼音，而不是std拼音
             if ',' in std_pinyin:
                 std_pinyins = std_pinyin.split(',')
                 for std_py in std_pinyins:
@@ -66,6 +66,7 @@ def map_to_dialect(text_unit, pinyin_unit, simple_map, polyphonic_map):
     if text_unit.startswith("#"):
         return pinyin_unit
     else:
+        # print('=================', text_unit, pinyin_unit, simple_map.get(text_unit, '#-'), polyphonic_map.get((text_unit, pinyin_unit), '##'))
         return polyphonic_map.get((text_unit, pinyin_unit), simple_map.get(text_unit, pinyin_unit))
 
 
