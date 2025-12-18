@@ -6,7 +6,7 @@ CUDA_VISIBLE_DEVICES=0 python ./batch_infer.py \
 --num_exps 9 \
 --moe_topK 1 \
 --gen_file path/to/testset.txt \
---ckpt_file path/to/ckpt.pt \
+--ckpt_file path/to/10ep_mlpEXP_9.pt \
 --vocab_file diamoettsv1/diamoe_tts/data/vocab.txt  \
 --ref_audio path/to/reference.wav \
 --ref_text path/to/reference.txt \

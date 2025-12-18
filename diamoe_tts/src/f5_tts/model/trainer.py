@@ -235,12 +235,22 @@ class Trainer:
             else:
                 g_update = int(ckpt_update)
 
+            # handle checkpoint without ema_model_state_dict
+            if 'ema_model_state_dict' not in checkpoint:
+                if 'model_state_dict' in checkpoint:
+                    # use model_state_dict to initialize EMA model
+                    checkpoint['ema_model_state_dict'] = checkpoint['model_state_dict']
+                else:
+                    raise ValueError(f"Checkpoint {self.basic_ckpt_path} must contain either 'ema_model_state_dict' or 'model_state_dict'")
+
         for key in ["ema_model.mel_spec.mel_stft.mel_scale.fb", "ema_model.mel_spec.mel_stft.spectrogram.window"]:
-            if key in checkpoint["ema_model_state_dict"]:
+            # if key in checkpoint["ema_model_state_dict"]:
+            if 'ema_model_state_dict' in checkpoint and key in checkpoint["ema_model_state_dict"]:# add
                 del checkpoint["ema_model_state_dict"][key]
         if self.is_main:
             # MoE
-            self.ema_model.load_state_dict(checkpoint["ema_model_state_dict"], strict=False)
+            if 'ema_model_state_dict' in checkpoint: # add
+                self.ema_model.load_state_dict(checkpoint["ema_model_state_dict"], strict=False)
 
         if "update" in checkpoint or "step" in checkpoint:
             # patch for backward compatibility, with before f992c4e
