@@ -10,7 +10,7 @@ import soundfile as sf
 from datasets.arrow_writer import ArrowWriter
 from tqdm import tqdm
 
-
+import traceback
 import json
 import pickle
 from pathlib import Path
@@ -325,12 +325,12 @@ if __name__ == "__main__":
     # configs
     dataset_name = "train1"
     exp_name = "exp1"
-    vocab_path = "path/to/diamoettsv1/diamoe_tts/data/vocab.txt"
+    vocab_path = os.getenv('VOCAB_FILE', "/home/sx/vm/DiaMoE-TTS/diamoe_tts/data/vocab.txt")
 
     save_dir = str(files("f5_tts").joinpath("../../")) + f"/data/{dataset_name}"
     check_duplicate_words(vocab_path)  # Word List Recheck
     ipalist = load_ipa_list(vocab_path)
-    punctuation_list = load_punctuation_list("path/to/diamoettsv1/diamoe_tts/data/punctuation.txt")
+    punctuation_list = load_punctuation_list(os.getenv('PUNCTUATION_FILE', "/home/sx/vm/DiaMoE-TTS/diamoe_tts/data/punctuation.txt"))
 
 
     print(f"\nPrepare for {dataset_name}, will save to {save_dir}\n")
@@ -352,8 +352,8 @@ if __name__ == "__main__":
 
 
     data1 = process_dataset(
-         "path/to/ipa_dataset.txt",
-         "root/path/of/audios",
+         "/home/sx/vm/DiaMoE-TTS/resources/syllables_gizu.diamoe-tts.list_ipa_format.txt",
+         "/home/sx/vm/DiaMoE-TTS/resources/sinmin",
          ipalist,
          punctuation_list,
          'dialect_type',

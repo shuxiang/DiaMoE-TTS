@@ -111,9 +111,15 @@ def load_vocoder(vocoder_name="vocos", is_local=False, local_path="", device=dev
             model_path = f"{local_path}/pytorch_model.bin"
         else:
             print("Download Vocos from huggingface charactr/vocos-mel-24khz")
-            repo_id = "charactr/vocos-mel-24khz"
-            config_path = hf_hub_download(repo_id=repo_id, cache_dir=hf_cache_dir, filename="config.yaml")
-            model_path = hf_hub_download(repo_id=repo_id, cache_dir=hf_cache_dir, filename="pytorch_model.bin")
+            VOCOS_CONFIG_FILE = os.getenv('VOCOS_CONFIG_FILE','')
+            VOCOS_MODEL_FILE = os.getenv('VOCOS_MODEL_FILE', '')
+            if os.path.exists(VOCOS_MODEL_FILE):
+                config_path = VOCOS_CONFIG_FILE
+                model_path  = VOCOS_MODEL_FILE
+            else:
+                repo_id = "charactr/vocos-mel-24khz"
+                config_path = hf_hub_download(repo_id=repo_id, cache_dir=hf_cache_dir, filename="config.yaml")
+                model_path = hf_hub_download(repo_id=repo_id, cache_dir=hf_cache_dir, filename="pytorch_model.bin")
         vocoder = Vocos.from_hparams(config_path)
         state_dict = torch.load(model_path, map_location="cpu", weights_only=True)
         from vocos.feature_extractors import EncodecFeatures

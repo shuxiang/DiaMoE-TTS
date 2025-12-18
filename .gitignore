@@ -46,3 +46,8 @@ dialect_frontend/*.txt
 dialect_frontend/*.log
 dialect_frontend/test
 resources
+*.txt
+diamoe_tts/duration_cache
+diamoe_tts/data
+diamoe_tts/ckpts
+diamoe_tts/runs
