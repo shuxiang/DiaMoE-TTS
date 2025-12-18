@@ -41,6 +41,10 @@ uv.lock
 pyproject.toml
 Doc.md
 diamoe_tts/src/f5_tts/infer/batch_infer_test.sh
+.wav
+.xls
+.xlsx
+.csv
 
 dialect_frontend/*.txt
 dialect_frontend/*.log

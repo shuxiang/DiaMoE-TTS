@@ -96,7 +96,7 @@ def convert_file(txt_path, excel_path, output_path):
 
             dialect_line = " ".join(dialect_pinyin_units)
             fout.write(f"{index}\t{text}\t{dialect_line}\n")
-            print(f"{index}\t{text}\t{dialect_line}\n")
+            print(f"hanzi2dialect==>{index}\t{text}\t{dialect_line}\n")
 
 
 if __name__ == "__main__":
