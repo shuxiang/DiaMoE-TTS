@@ -141,6 +141,7 @@ def process_file_all_steps(input_path, word_excel_path, output_path):
             new_pinyin_units = apply_replacements(text_units, pinyin_units, replacements)
 
             fout.write(f"{index}\t{text_with_hash}\t{' '.join(new_pinyin_units)}\n")
+            print(f"word2dialect_pinyin==>{index}\t{text_with_hash}\t{' '.join(new_pinyin_units)}\n")
 
 
 

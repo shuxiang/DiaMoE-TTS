@@ -81,6 +81,7 @@ def process_file_to_ipa(input_path, output_path, excel_path):
             ipa_units = convert_pinyin_to_ipa(pinyin_units, p2i_dict, unmatched_set)
             formatted_ipa = format_ipa_output(ipa_units)
             fout.write(f"{index}\t{text}\t{formatted_ipa}\n")
+            print(f"pinyin2ipa==>{index}\t{text}\t{formatted_ipa}\n")
 
         # Write log of unmatched pinyin items
         if unmatched_set:

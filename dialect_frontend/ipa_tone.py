@@ -32,6 +32,7 @@ def process_ipa_file(input_path, tone_excel_path, output_path):
 
             replaced_ipa_line = replace_tone_marks_in_ipa(ipa_line, tone_map)
             fout.write(f"{index}\t{text}\t{replaced_ipa_line}\n")
+            print(f"ipa_tone==>{index}\t{text}\t{replaced_ipa_line}\n")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

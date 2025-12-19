@@ -239,6 +239,7 @@ def process_tone_script_with_flexible_rules(input_path, output_path, dialect, TO
                 )
 
             fout.write(f"{index}\t{text}\t{' '.join(pinyin_units)}\n")
+            print(f"liandu_tone==>{index}\t{text}\t{' '.join(pinyin_units)}\n")
 
 def qingdao_tone2_change(pinyin_units):
     """

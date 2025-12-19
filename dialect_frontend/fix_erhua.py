@@ -91,6 +91,7 @@ def process_file(input_path, excel_path, output_path):
 
             replaced_pinyin = match_and_replace(text_units, pinyin_units, word_pinyin_map)
             fout.write(f"{index}\t{text}\t{' '.join(replaced_pinyin)}\n")
+            print(f"fix_erhua==>{index}\t{text}\t{' '.join(replaced_pinyin)}\n")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
